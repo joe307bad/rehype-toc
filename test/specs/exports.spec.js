@@ -1,7 +1,7 @@
 "use strict";
 
-const commonJSExport = require("../../");
-const { default: defaultExport, toc: namedExport } = require("../../");
+const commonJSExport = require("../../src/index");
+const { default: defaultExport, toc: namedExport } = require("../../src/index");
 const { expect } = require("chai");
 
 describe("rehype-toc package exports", () => {

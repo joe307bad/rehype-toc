@@ -31,7 +31,7 @@ function customizeNodes(parent: Element, tagName: string, hook?: CustomizationHo
       }
     }
 
-    if (child.children) {
+    if ((child as any).children) {
       customizeNodes(child as Element, tagName, hook);
     }
   }

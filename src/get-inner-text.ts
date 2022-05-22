@@ -4,7 +4,7 @@ import { isText } from "./type-guards";
 /**
  * Returns the text content of all children of the given node
  */
-export function getInnerText(node: Node): string {
+export function getInnerText(node: any): string {
   let text = "";
 
   if (isText(node)) {

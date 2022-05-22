@@ -2,7 +2,7 @@
 
 const process = require("../utils/process");
 const compare = require("../utils/compare");
-const { expect } = require("chai");
+const {expect} = require("chai");
 
 describe("options.position", () => {
   describe("beforebegin", () => {
@@ -16,9 +16,9 @@ describe("options.position", () => {
           </body>
         </html>
       `,
-      {
-        position: "beforebegin",
-      });
+        {
+          position: "beforebegin",
+        });
 
       compare(results, `
         <html>
@@ -43,9 +43,9 @@ describe("options.position", () => {
           </body>
         </html>
       `,
-      {
-        position: "beforebegin",
-      });
+        {
+          position: "beforebegin",
+        });
 
       compare(results, `
         <html>
@@ -69,9 +69,9 @@ describe("options.position", () => {
           </body>
         </html>
       `,
-      {
-        position: "beforebegin",
-      });
+        {
+          position: "beforebegin",
+        });
 
       compare(results, `
         <html>
@@ -99,9 +99,9 @@ describe("options.position", () => {
           </body>
         </html>
       `,
-      {
-        position: "afterbegin",
-      });
+        {
+          position: "afterbegin",
+        });
 
       compare(results, `
         <html>
@@ -128,9 +128,9 @@ describe("options.position", () => {
           </body>
         </html>
       `,
-      {
-        position: "afterbegin",
-      });
+        {
+          position: "afterbegin",
+        });
 
       compare(results, `
         <html>
@@ -156,9 +156,9 @@ describe("options.position", () => {
           </body>
         </html>
       `,
-      {
-        position: "afterbegin",
-      });
+        {
+          position: "afterbegin",
+        });
 
       compare(results, `
         <html>
@@ -187,9 +187,9 @@ describe("options.position", () => {
           </body>
         </html>
       `,
-      {
-        position: "beforeend",
-      });
+        {
+          position: "beforeend",
+        });
 
       compare(results, `
         <html>
@@ -216,9 +216,9 @@ describe("options.position", () => {
           </body>
         </html>
       `,
-      {
-        position: "beforeend",
-      });
+        {
+          position: "beforeend",
+        });
 
       compare(results, `
         <html>
@@ -244,9 +244,9 @@ describe("options.position", () => {
           </body>
         </html>
       `,
-      {
-        position: "beforeend",
-      });
+        {
+          position: "beforeend",
+        });
 
       compare(results, `
         <html>
@@ -275,9 +275,9 @@ describe("options.position", () => {
           </body>
         </html>
       `,
-      {
-        position: "afterend",
-      });
+        {
+          position: "afterend",
+        });
 
       compare(results, `
         <html>
@@ -302,9 +302,9 @@ describe("options.position", () => {
           </body>
         </html>
       `,
-      {
-        position: "afterend",
-      });
+        {
+          position: "afterend",
+        });
 
       compare(results, `
         <html>
@@ -328,9 +328,9 @@ describe("options.position", () => {
           </body>
         </html>
       `,
-      {
-        position: "afterend",
-      });
+        {
+          position: "afterend",
+        });
 
       compare(results, `
         <html>
@@ -360,11 +360,10 @@ describe("options.position", () => {
           </body>
         </html>
       `,
-      {
-        position: "foobar",
-      });
-    }
-    catch (e) {
+        {
+          position: "foobar",
+        });
+    } catch (e) {
       error = e;
     }
 

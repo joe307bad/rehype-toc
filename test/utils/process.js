@@ -1,6 +1,6 @@
 "use strict";
 
-const toc = require("../../");
+const toc = require("../../src/index");
 const unified = require("unified");
 const parse = require("rehype-parse");
 const slug = require("rehype-slug");

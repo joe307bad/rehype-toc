@@ -23,21 +23,23 @@ export function toc(this: Processor, opts?: Options): Transformer {
 
     let mainNode: Element | undefined;
     let mainParent: Parent | undefined;
-    let placeholderNode: Element | undefined;
+    let placeholderNode: any;
     let placeholderParent: Parent | undefined;
 
     if (options.placeholder) {
       // Find the <target> element if option is given
-      [placeholderNode, placeholderParent] = findPlaceholderNode(root, options.placeholder);
+      placeholderNode = findPlaceholderNode(root, options.placeholder)?.[0];
 
-      if (!placeholderNode || !placeholderParent) { return root; }
+      if (!placeholderNode) {
+        return root;
+      }
     }
 
     // Find the <main> or <body> element
     [mainNode, mainParent] = findMainNode(root);
 
     // Find all heading elements
-    let headings = findHeadings(mainNode, options);
+    let headings = findHeadings(root, options);
 
     // Create the table of contents
     let tocNode = createTOC(headings, options);
@@ -47,7 +49,15 @@ export function toc(this: Processor, opts?: Options): Transformer {
 
     if (node) {
       // Add the table of contents to the <main> element
-      insertTOC(node, placeholderNode || mainNode, placeholderParent || mainParent, { ...options, replace: !!options.placeholder });
+      insertTOC(
+        node,
+        placeholderNode || mainNode,
+        placeholderParent || mainParent,
+        {
+          ...options,
+          replace: !!options.placeholder,
+        }
+      );
     }
 
     return root;

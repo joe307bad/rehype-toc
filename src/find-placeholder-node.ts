@@ -1,39 +1,22 @@
-import { Node, Parent, Element, Text } from "hast";
-import { isElement, isParent, isText } from "./type-guards";
+import { Parent, } from "hast";
+const visit = require("unist-util-visit");
 
 /**
  * Returns the parent Parent node of the placeholder Text node (aka the `target` node).
  * The second node returned is the ancestor of the placeholder Text node (aka the `parent` node).
  */
-export function findPlaceholderNode(root: Parent, placeholder: string): [Element | undefined, Parent | undefined] {
-  const [, parent, ancestor] = findText(root, placeholder);
+export function findPlaceholderNode(root: Parent, placeholder: string): any {
+  const node = findText(root, placeholder);
 
-  return [parent, ancestor];
+  return node;
 }
 
-/**
- * Recursively crawls the HAST tree and finds the first Text element with the exactly specified text.
- */
-function findText(node: Node, placeholder: string): [Text | undefined, Element | undefined, Parent | undefined] {
-  if (isText(node)) {
-    return [
-      node.value === placeholder ? node : undefined,
-      undefined,
-      undefined,
-    ];
-  }
-  else if (isParent(node)) {
-    for (const child of node.children) {
-      let [found, parent] = findText(child, placeholder);
-      if (found) {
-        if (!parent) {
-          if (!isElement(node)) { throw new Error("Parent `node` should be an Element hast node."); }
-          return [found, node, undefined];
-        }
-        return [found, parent, node];
-      }
+function findText(node: any, placeholder: string): any[] {
+  const placeholderNodes = [];
+  visit(node, (n, i, parent) => {
+    if (n.value === placeholder) {
+      placeholderNodes.push(parent);
     }
-  }
-
-  return [undefined, undefined, undefined];
+  });
+  return placeholderNodes;
 }

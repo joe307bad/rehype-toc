@@ -1,6 +1,6 @@
 # Git ignore
 # https://git-scm.com/docs/gitignore
-
+.npmrc
 # Miscellaneous
 *~
 *#

@@ -1,5 +1,5 @@
-import { Parent, Element } from "hast";
-import { NormalizedOptions } from "./options";
+import {Parent, Element} from "hast";
+import {NormalizedOptions} from "./options";
 
 /**
  * Inserts the table of contents at the specified position, relative to the given nodes.
@@ -11,13 +11,18 @@ import { NormalizedOptions } from "./options";
  * @param options.position - The `position` option determines where `toc` is inserted
  * @param options.replace - Set this to `true` will insert the `toc` node in place of `target` node
  */
-export function insertTOC(toc: Element, target: Element, parent: Parent, { position, replace }: NormalizedOptions & { replace: boolean }): void {
+export function insertTOC(toc: Element, target: Element, parent: Parent, {
+  position,
+  replace,
+  placeholder
+}: NormalizedOptions & { replace: boolean }): void {
   let childIndex = parent.children.indexOf(target);
 
-  if (replace) {
+  if (placeholder) {
+    target.children = [toc];
+  } else if (replace) {
     parent.children[childIndex] = toc;
-  }
-  else {
+  } else {
     switch (position) {
       case "beforebegin":
         parent.children.splice(childIndex, 0, toc);

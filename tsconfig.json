@@ -3,21 +3,12 @@
     "target": "esnext",
     "module": "commonjs",
     "moduleResolution": "node",
-
+    "esModuleInterop": true,
     "outDir": "lib",
     "sourceMap": true,
     "declaration": true,
-
+    "strict": false,
     "newLine": "LF",
-    "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitAny": true,
-    "noImplicitThis": true,
-    "strictBindCallApply": true,
-    "strictNullChecks": true,
-    "strictPropertyInitialization": true,
-    "stripInternal": true,
-
     "typeRoots": [
       "node_modules/@types",
       "src/typings"
